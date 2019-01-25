@@ -43,7 +43,6 @@ hook.Add("Initialize", "EGPURLMATERIAL_LOAD", function()
 
             local hash = util.CRC(body)
             local fileName = "egpurlmaterial/" .. tostring(hash) .. extension
-            print(fileName)
 
             if not file.Exists(fileName, "DATA") then
               file.Write(fileName, body)
@@ -52,8 +51,6 @@ hook.Add("Initialize", "EGPURLMATERIAL_LOAD", function()
             if not urlMatLookup[hash] then
               urlMatLookup[hash] = Material("../data/" .. fileName, "smooth")
             end
-
-            print(urlMatLookup[hash])
 
             obj.material = urlMatLookup[hash]
             ent:EGP_Update()
